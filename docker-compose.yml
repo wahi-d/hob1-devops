@@ -1,0 +1,25 @@
+services:
+  web:
+    build: .
+    container_name: hob1-web
+  
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+  db:
+    image: mysql:8.0.44
+    container_name: hob1-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: hob
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/hob.sql:/docker-entrypoint-initdb.d/hob.sql:ro
+volumes:
+  mysql_data:

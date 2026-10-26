@@ -1,5 +1,5 @@
 <?php
-$host = 'localhost'; // Your database host
+$host = getenv('DB_HOST') ?: 'localhost'; // Your database host
 $db = 'hob';     // Your database name
 $user = 'root';      // Your database username
 $pass = '';          // Your database password

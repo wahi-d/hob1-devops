@@ -1,0 +1,5 @@
+.git
+.github
+mysql-check.txt
+*.log
+.env
